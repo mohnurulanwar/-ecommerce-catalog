@@ -99,11 +99,11 @@ export default {
 
   methods: {  
 
-    women(){
-      let api = "https://fakestoreapi.com/products/4"
-      fetch (api) 
-      .then((result) => result.json())
-      .then((data) => (this.products = data))
+    async women(){
+      const api = await fetch ('https://fakestoreapi.com/products/4');
+      const response = await api.json()
+      const data = response 
+      console.log(this.products = data);
 
       this.nextAnavailable = false;
       this.nextWomen = false;
