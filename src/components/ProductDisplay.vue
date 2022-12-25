@@ -91,8 +91,8 @@ export default {
   },
   
   beforeCreate() {
-    const api = "https://fakestoreapi.com/products/16"
-    fetch (api) 
+    let api = "https://fakestoreapi.com/products/16"
+    fetch (api)
     .then((result) => result.json())
     .then((data) => (this.products = data))
 },
@@ -100,7 +100,7 @@ export default {
   methods: {  
 
     women(){
-      const api = "https://fakestoreapi.com/products/4"
+      let api = "https://fakestoreapi.com/products/4"
       fetch (api) 
       .then((result) => result.json())
       .then((data) => (this.products = data))
@@ -110,11 +110,11 @@ export default {
       this.nextMens = true;
     },
 
-    mens(){
-      const api = "https://fakestoreapi.com/products/16"
-      fetch (api) 
-      .then((result) => result.json())
-      .then((data) => (this.products = data))
+    async mens(){
+      const api = await fetch ('https://fakestoreapi.com/products/16');
+      const response = await api.json()
+      const data = response 
+      console.log(this.products = data);
 
       this.nextAnavailable = true;
       this.nextWomen = false;
